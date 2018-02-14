@@ -1,4 +1,4 @@
-package com.example.bhavithagottimukkula.login_java.activity;
+package com.fission.activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.bhavithagottimukkula.login_java.R;
-import com.example.bhavithagottimukkula.login_java.db.DataBaseHelper;
+import com.fission.R;
+import com.fission.db.DataBaseHelper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

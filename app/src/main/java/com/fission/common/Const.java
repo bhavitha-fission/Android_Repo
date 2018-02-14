@@ -1,4 +1,4 @@
-package com.example.bhavithagottimukkula.login_java.common;
+package com.fission.common;
 
 public interface Const {
 

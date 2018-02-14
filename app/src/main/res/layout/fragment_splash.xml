@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@drawable/bg"
-    tools:context="com.example.bhavithagottimukkula.login_java.activity.SplashActivity">
+    tools:context="com.fission.activity.SplashActivity">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

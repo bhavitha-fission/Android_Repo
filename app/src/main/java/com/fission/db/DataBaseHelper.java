@@ -1,4 +1,4 @@
-package com.example.bhavithagottimukkula.login_java.db;
+package com.fission.db;
 
 import android.content.ContentValues;
 import android.content.Context;

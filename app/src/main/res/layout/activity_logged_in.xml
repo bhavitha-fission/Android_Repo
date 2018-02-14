@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context="com.example.bhavithagottimukkula.login_java.activity.HomeActivity">
-    <fragment android:name="com.example.bhavithagottimukkula.login_java.fragment.SplashFragment"
+    tools:context="com.fission.activity.HomeActivity">
+    <fragment android:name="com.fission.fragment.SplashFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/test"/>

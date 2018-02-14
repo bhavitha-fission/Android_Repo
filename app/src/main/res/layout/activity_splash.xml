@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.example.bhavithagottimukkula.login_java.activity.SplashActivity">
+    tools:context="com.fission.activity.SplashActivity">
 
     <FrameLayout
         android:id="@+id/container"

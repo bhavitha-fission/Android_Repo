@@ -1,4 +1,4 @@
-package com.example.bhavithagottimukkula.login_java.fragment;
+package com.fission.fragment;
 
 
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.example.bhavithagottimukkula.login_java.R;
-import com.example.bhavithagottimukkula.login_java.common.Const;
+import com.fission.R;
+import com.fission.common.Const;
 
 
 /**

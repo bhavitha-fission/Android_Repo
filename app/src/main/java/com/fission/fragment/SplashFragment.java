@@ -1,4 +1,4 @@
-package com.example.bhavithagottimukkula.login_java.fragment;
+package com.fission.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,11 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.bhavithagottimukkula.login_java.R;
-
-/**
- * Created by bhavithagottimukkula on 1/22/18.
- */
+import com.fission.R;
 
 public class SplashFragment extends Fragment {
 

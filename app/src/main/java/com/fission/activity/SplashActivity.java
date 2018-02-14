@@ -1,11 +1,12 @@
-package com.example.bhavithagottimukkula.login_java.activity;
+package com.fission.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.bhavithagottimukkula.login_java.R;
+import com.fission.R;
+
 
 public class SplashActivity extends AppCompatActivity {
 
