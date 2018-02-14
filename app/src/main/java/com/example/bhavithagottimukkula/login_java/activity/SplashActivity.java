@@ -1,9 +1,11 @@
-package com.example.bhavithagottimukkula.login_java;
+package com.example.bhavithagottimukkula.login_java.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.bhavithagottimukkula.login_java.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -25,9 +27,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
     }
 
     @Override
