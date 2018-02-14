@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mviewProgressBar = (ProgressBar)findViewById(R.id.login_progress_bar);
+        mviewProgressBar = (ProgressBar) findViewById(R.id.login_progress_bar);
         final EditText etUserName = findViewById(R.id.editText);
         final EditText etPassword = findViewById(R.id.editText2);
 
@@ -40,8 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 mviewProgressBar.setVisibility(View.VISIBLE);
                 final String userName = etUserName.getText().toString();
-                 String password = etPassword.getText().toString();
-                if(userName.matches("") || password.matches("")) {
+                String password = etPassword.getText().toString();
+                if (userName.matches("") || password.matches("")) {
 
                     Toast.makeText(LoginActivity.this, "please enter all values",
                             Toast.LENGTH_SHORT).show();
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                                             Toast.LENGTH_SHORT).show();
                                     FirebaseUser user = mAuth.getCurrentUser();
 
-                                    Intent intent = new Intent(LoginActivity.this, WelcomeUserActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                     intent.putExtra(Const.USER_NAME, userName);
                                     startActivity(intent);
 
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         });
-                 }
+            }
         });
 
         findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
@@ -83,7 +83,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
 }

@@ -1,9 +1,9 @@
 package com.fission.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -38,20 +38,20 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               if(etEmail.getText().toString().matches("") || etPassword.getText().toString().matches("") || etUsername.getText().toString().matches("")) {
-                  Toast.makeText(SignUpActivity.this,"please enter all values",Toast.LENGTH_SHORT).show();
-                  return;
-               }
-                insertData(etUsername.getText().toString(),etEmail.getText().toString(),etPassword.getText().toString());
+                if (etEmail.getText().toString().matches("") || etPassword.getText().toString().matches("") || etUsername.getText().toString().matches("")) {
+                    Toast.makeText(SignUpActivity.this, "please enter all values", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                insertData(etUsername.getText().toString(), etEmail.getText().toString(), etPassword.getText().toString());
                 mviewProgressBar.setVisibility(view.VISIBLE);
                 mAuth = FirebaseAuth.getInstance();
                 mAuth.createUserWithEmailAndPassword(etEmail.getText().toString(), etPassword.getText().toString())
-                        .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getApplicationContext(), "Registration successfull", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(SignUpActivity.this, WelcomeUserActivity.class);
+                                    Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
                                     startActivity(intent);
                                 } else {
                                     Log.e("Error", task.getException().toString());
@@ -63,20 +63,19 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    public void insertData(String name,String email,String Password) {
+    public void insertData(String name, String email, String Password) {
 
-        boolean result = mDataBaseHelper.insertDataIntoDataBase(name,email,Password);
+        boolean result = mDataBaseHelper.insertDataIntoDataBase(name, email, Password);
 
-        if(result == true ){
+        if (result == true) {
             displayToastMessage("Data saved in database!");
-        }
-        else {
+        } else {
             displayToastMessage("Data not saved !");
         }
     }
 
     public void displayToastMessage(String msg) {
 
-        Toast.makeText(SignUpActivity.this,msg,Toast.LENGTH_SHORT).show();
+        Toast.makeText(SignUpActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 }

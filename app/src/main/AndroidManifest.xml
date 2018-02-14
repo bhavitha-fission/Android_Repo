@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.fission.activity.LoginActivity" />
-        <activity android:name="com.fission.activity.WelcomeUserActivity" />
         <activity android:name="com.fission.activity.HomeActivity" />
         <activity android:name="com.fission.activity.SplashActivity">
             <intent-filter>
