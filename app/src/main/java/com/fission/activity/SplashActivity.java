@@ -1,11 +1,14 @@
 package com.fission.activity;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.fission.R;
+import com.fission.fragment.SplashFragment;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -17,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
 
             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);
-            if(isFinishing()) {
+            if (isFinishing()) {
                 finish();
             }
         }
@@ -33,6 +36,10 @@ public class SplashActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.container, new SplashFragment());
+        ft.commit();
     }
 
     @Override

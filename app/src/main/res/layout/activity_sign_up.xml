@@ -51,6 +51,8 @@
         android:layout_height="54dp"
         android:layout_marginTop="76dp"
         android:text="@string/signup"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
         android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
