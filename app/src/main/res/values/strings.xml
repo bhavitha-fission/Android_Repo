@@ -6,4 +6,7 @@
     <string name="password">Password</string>
     <string name="log_in">Log In</string>
     <string name="don_t_have_account_sign_up">Don\'t have account. Sign up</string>
+    <string name="name">Name</string>
+    <string name="signup">Sign Up</string>
+    <string name="registration">Registration</string>
 </resources>
