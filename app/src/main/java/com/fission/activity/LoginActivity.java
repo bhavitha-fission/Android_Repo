@@ -73,7 +73,7 @@ public void signIn() {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
-
+                        mViewProgressBar.setVisibility(View.GONE);
                         displayToastMessage(getString(R.string.sign_in_success));
                         FirebaseUser user = mAuth.getCurrentUser();
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
@@ -82,6 +82,7 @@ public void signIn() {
 
                     } else {
                         // If sign in fails, display a message to the user.
+                        mViewProgressBar.setVisibility(View.GONE);
                         displayToastMessage(getString(R.string.authentication_failed));
 
                     }

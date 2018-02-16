@@ -17,4 +17,7 @@
     <string name="data_saved">Data saved in database!</string>
     <string name="data_not_saved">Data not saved !</string>
     <string name="plese_enter_all_values">please enter all values</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
 </resources>
