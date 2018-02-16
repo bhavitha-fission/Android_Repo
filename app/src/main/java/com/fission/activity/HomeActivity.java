@@ -21,8 +21,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(getString(R.string.home));
         setContentView(R.layout.activity_home);
+
+        setTitle(R.string.home);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -34,15 +35,15 @@ public class HomeActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_home:
-                                displayToastMessage(getString(R.string.home));
+                                setTitle(R.string.home);
                                 loadFragment(R.string.home);
                                 break;
                             case R.id.action_profile:
-                                displayToastMessage(getString(R.string.profile));
+                                setTitle(R.string.profile);
                                 loadFragment(R.string.profile);
                                 break;
                             case R.id.action_settings:
-                                displayToastMessage(getString(R.string.settings));
+                                setTitle(R.string.settings);
                                 loadFragment(R.string.settings);
                                 break;
                         }
@@ -53,7 +54,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void displayToastMessage(String msg) {
-
         Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 
