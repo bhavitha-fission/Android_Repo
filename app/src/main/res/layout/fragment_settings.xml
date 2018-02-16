@@ -2,11 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fission.fragment.HomeFragment">
+    tools:context="com.fission.fragment.SettingsFragment">
 
     <EditText
-        android:id="@+id/home"
+        android:id="@+id/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="welcome to home" />
+        android:text="welcome to settings" />
+
 </FrameLayout>

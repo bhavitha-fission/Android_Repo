@@ -15,12 +15,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
 
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    ProgressBar mViewProgressBar;
+    private ProgressBar mViewProgressBar;
 
 
     @Override
@@ -28,13 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTitle(getString(R.string.LogIn));
         setContentView(R.layout.activity_login);
-
-        mViewProgressBar = (ProgressBar) findViewById(R.id.login_progress_bar);
-        final EditText etUserName = findViewById(R.id.editText);
-        final EditText etPassword = findViewById(R.id.editText2);
-
         mAuth = FirebaseAuth.getInstance();
-
         findViewById(R.id.log_in).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-public void signIn() {
+private void signIn() {
 
     mViewProgressBar = (ProgressBar) findViewById(R.id.login_progress_bar);
     final EditText etUserName = findViewById(R.id.editText);
@@ -75,7 +69,6 @@ public void signIn() {
                         // Sign in success, update UI with the signed-in user's information
                         mViewProgressBar.setVisibility(View.GONE);
                         displayToastMessage(getString(R.string.sign_in_success));
-                        FirebaseUser user = mAuth.getCurrentUser();
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         intent.putExtra(Const.USER_NAME, userName);
                         startActivity(intent);
@@ -90,7 +83,7 @@ public void signIn() {
             });
 }
 
-    public void displayToastMessage(String msg) {
+    private void displayToastMessage(String msg) {
 
         Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
     }

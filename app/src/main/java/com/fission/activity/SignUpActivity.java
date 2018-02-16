@@ -42,7 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    public void insertDataIntoDB(String name, String email, String Password) {
+    private void insertDataIntoDB(String name, String email, String Password) {
 
         boolean result = mDataBaseHelper.insertDataIntoDataBase(name, email, Password);
 
@@ -53,12 +53,12 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    public void displayToastMessage(String msg) {
+    private void displayToastMessage(String msg) {
         Toast.makeText(SignUpActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 
 
-    public void signUp() {
+    private void signUp() {
         mDataBaseHelper = new DataBaseHelper(this);
         mViewProgressBar = findViewById(R.id.signup_progress_bar);
         final EditText etUsername = findViewById(R.id.userName);

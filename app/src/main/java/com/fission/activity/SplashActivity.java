@@ -13,12 +13,12 @@ import com.fission.fragment.SplashFragment;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private Handler mHandler = new Handler();
-    private Runnable mRunnable = new Runnable() {
+    private final Handler mHandler = new Handler();
+    private final Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
 
-            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+            Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
             startActivity(intent);
             if (isFinishing()) {
                 finish();
