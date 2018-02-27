@@ -17,7 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity  implements View.OnClickListener{
 
     private FirebaseAuth mAuth;
     private ProgressBar mViewProgressBar;
@@ -29,20 +29,9 @@ public class LoginActivity extends AppCompatActivity {
         setTitle(getString(R.string.LogIn));
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        findViewById(R.id.log_in).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signIn();
-            }
-        });
-
-        findViewById(R.id.sign_up).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
+        findViewById(R.id.log_in).setOnClickListener(this);
+        findViewById(R.id.sign_up).setOnClickListener(this);
+        findViewById(R.id.forgotPassword).setOnClickListener(this);
     }
 
 private void signIn() {
@@ -88,4 +77,21 @@ private void signIn() {
         Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.forgotPassword :
+                Intent i = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+                startActivity(i);
+                break;
+            case R.id.sign_up :
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.log_in :
+                signIn();
+                break;
+        }
+    }
 }
