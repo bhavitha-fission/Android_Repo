@@ -1,14 +1,117 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_margin="10dp"
     tools:context="com.fission.fragment.ProfileFragment">
 
 
     <EditText
-        android:id="@+id/profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="welcome to profile"/>
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/profile_image"
+        android:layout_marginTop="20dp"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        android:text="Bhavitha" />
 
-</FrameLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/profile" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/designationWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp">
+
+        <EditText
+            android:id="@+id/designation"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/name"
+            android:layout_centerVertical="true"
+            android:clickable="false"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="@string/designation"
+            android:inputType="textPersonName"
+            android:text="Software" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/dobWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/designationWrapper">
+
+        <EditText
+            android:id="@+id/dob"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignStart="@+id/designation"
+            android:layout_below="@+id/designation"
+            android:layout_marginTop="24dp"
+            android:clickable="false"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="@string/dob"
+            android:inputType="textPersonName" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/mailWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dobWrapper">
+
+        <EditText
+            android:id="@+id/mail"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignStart="@+id/dob"
+            android:layout_below="@+id/dob"
+            android:layout_marginTop="27dp"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textPersonName" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/numberWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mailWrapper">
+
+        <EditText
+            android:id="@+id/mobile"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignStart="@+id/mail"
+            android:layout_below="@+id/mail"
+            android:layout_marginTop="19dp"
+            android:ems="10"
+            android:hint="@string/mobile"
+            android:inputType="number" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/changeImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/name"
+        android:layout_alignEnd="@+id/profile_image"
+        android:background="@drawable/camera" />
+
+</RelativeLayout>

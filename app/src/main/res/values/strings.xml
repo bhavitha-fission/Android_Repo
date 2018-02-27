@@ -13,14 +13,23 @@
     <string name="registration_successful">Registration successful</string>
     <string name="sign_in_success">Sign in success</string>
     <string name="authentication_failed">Authentication failed.</string>
-    <string name="enter_all_values">please enter all values</string>
+    <string name="enter_all_values">Please enter all values</string>
     <string name="data_saved">Data saved in database!</string>
     <string name="data_not_saved">Data not saved !</string>
-    <string name="plese_enter_all_values">please enter all values</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+    <string name="designation">Designation</string>
+    <string name="dob">Date of Birth</string>
+    <string name="mobile">Mobile</string>
+    <string name="edit">Edit</string>
+    <string name="plese_enter_all_values">Please enter all values</string>
+    <string name="cancel">Cancel</string>
+    <string name="Take_Photo">Take Photo</string>
+    <string name="choose_from_library">Choose from Library</string>
+    <string name="data">data</string>
 </resources>

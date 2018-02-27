@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.fission.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 /**
