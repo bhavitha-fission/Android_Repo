@@ -2,8 +2,10 @@ package com.fission.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -49,5 +51,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         else {
             return  true;
         }
+    }
+
+
+    public Cursor readData(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        //String[] requiredColumns = {PERSON_COLUMN_ID,PERSON_COLUMN_NAME,PERSON_COLUMN_BRANCH,PERSON_COLUMN_PHNO};
+        Cursor res =  db.rawQuery( "select * from "+USER_TABLE_NAME, null );
+        //res.getCount();
+        //Log.e("A","cursor count "+res.getCount());
+        return res;
     }
 }

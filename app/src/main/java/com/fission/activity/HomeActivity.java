@@ -23,11 +23,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         setTitle(R.string.home);
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
         loadFragment(R.string.home);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override

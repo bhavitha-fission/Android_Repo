@@ -81,11 +81,13 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            mViewProgressBar.setVisibility(View.GONE);
                             displayToastMessage(getString(R.string.registration_successful));
                             Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
+                            mViewProgressBar.setVisibility(View.GONE);
                             displayToastMessage(task.getException().getMessage());
                         }
                     }

@@ -23,7 +23,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
-
+        setTitle(getString(R.string.forgot_password));
         mAuth = FirebaseAuth.getInstance();
         mEtMail = findViewById(R.id.email);
 
@@ -32,7 +32,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String email = mEtMail.getText().toString().trim();
-
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplication(), "Enter your registered email id", Toast.LENGTH_SHORT).show();
                     return;

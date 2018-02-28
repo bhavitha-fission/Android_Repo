@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,18 +14,21 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.fission.R;
+import com.fission.db.DataBaseHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -44,12 +48,23 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private View view;
     private EditText mEtDob;
     private EditText mEtMobileNumber;
+    private DataBaseHelper mDataBaseHelper;
+    private String userName;
+    private String userEmail;
+    private  EditText mEtName;
+    private EditText mEtEmail;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        mDataBaseHelper = new DataBaseHelper(getActivity());
+        Cursor result = mDataBaseHelper.readData();
+        result.moveToFirst();
+        userName = result.getString(result.getColumnIndex(DataBaseHelper.USER_COLUMN_NAME));
+        userEmail = result.getString(result.getColumnIndex(DataBaseHelper.USER_COLUMN_EMAIL));
+
     }
 
     @Override
@@ -59,13 +74,16 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         imageView = view.findViewById(R.id.profile_image);
+        mEtName = view.findViewById(R.id.name);
+        mEtName.setText(userName);
+        mEtEmail = view.findViewById(R.id.mail);
+        mEtEmail.setText(userEmail);
         mEtDob = view.findViewById(R.id.dob);
         mEtMobileNumber = view.findViewById(R.id.mobile);
         mEtDob.setOnClickListener(this);
         view.findViewById(R.id.changeImage).setOnClickListener(this);
         view.findViewById(R.id.dob).setEnabled(false);
         mEtMobileNumber.setEnabled(false);
-
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -89,6 +107,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_edit:
+                item.setTitle("Done");
                 mEtDob.setEnabled(true);
                 mEtMobileNumber.setEnabled(true);
                 break;
@@ -151,7 +170,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     else if (userChoosenTask.equals("Choose from Library"))
                         galleryIntent();
                 } else {
-                    //code for deny
+
                 }
                 break;
         }
@@ -226,6 +245,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             case R.id.changeImage:
                 selectImage();
                 break;
+            case  R.id.mail:
+
+                break;
+            case R.id.name:
+
         }
     }
 }
