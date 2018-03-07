@@ -14,6 +14,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -48,11 +49,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private View view;
     private EditText mEtDob;
     private EditText mEtMobileNumber;
+    private EditText mETDesignation;
     private DataBaseHelper mDataBaseHelper;
     private String userName;
     private String userEmail;
     private  EditText mEtName;
     private EditText mEtEmail;
+    private Menu mMenu;
 
 
     @Override
@@ -82,8 +85,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         mEtMobileNumber = view.findViewById(R.id.mobile);
         mEtDob.setOnClickListener(this);
         view.findViewById(R.id.changeImage).setOnClickListener(this);
-        view.findViewById(R.id.dob).setEnabled(false);
+        mEtDob.setEnabled(false);
         mEtMobileNumber.setEnabled(false);
+        mETDesignation = view.findViewById(R.id.designation);
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -98,19 +102,35 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
+        this.mMenu =  menu;
         inflater.inflate(R.menu.menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.action_edit:
-                item.setTitle("Done");
-                mEtDob.setEnabled(true);
-                mEtMobileNumber.setEnabled(true);
-                break;
+                if (item.getTitle().toString().equalsIgnoreCase("EDIT")) {
+                    Toast.makeText(getContext(), item.getTitle(), Toast.LENGTH_SHORT).show();item.getTitle();
+                    mEtDob.setEnabled(true);
+                    mEtMobileNumber.setEnabled(true);
+                    mETDesignation.setEnabled(true);
+                    mEtEmail.setEnabled(true);
+                    mEtName.setEnabled(true);
+
+               }
+               else if (item.getTitle().toString().equalsIgnoreCase("Done")) {
+
+                    Toast.makeText(getContext(), item.getTitle(), Toast.LENGTH_SHORT).show();item.getTitle();
+                    mEtDob.setEnabled(false);
+                    mEtMobileNumber.setEnabled(false);
+                    mETDesignation.setEnabled(false);
+                    mEtEmail.setEnabled(false);
+                    mEtName.setEnabled(false);
+                }
+           break;
             default:
                 break;
 
@@ -249,8 +269,20 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.name:
+                break;
+
 
         }
+
+        if (TextUtils.isEmpty(mEtDob.getText())
+                || TextUtils.isEmpty(mEtMobileNumber.getText()))
+        {
+
+            MenuItem action_done = mMenu.findItem(R.id.action_edit);
+            action_done.setTitle(R.string.done) ;
+
+        }
+
     }
 }
 
