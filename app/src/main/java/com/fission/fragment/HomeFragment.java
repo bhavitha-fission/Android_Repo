@@ -1,42 +1,31 @@
 package com.fission.fragment;
 
 
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import com.fission.R;
-import com.fission.db.Image;
+import com.fission.db.ImageItem;
 import com.fission.db.RecyclerViewAdapter;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeFragment extends Fragment {
 
-    private final String image_description[] = {
-            "Donut",
-            "Eclair",
-            "Froyo"
-    };
-
-    public final String[] image_urls = {
-            "http://i.imgur.com/DvpvklR.png",
-            "http://i.imgur.com/DvpvklR.png",
-            "http://i.imgur.com/DvpvklR.png"
-    };
-    RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,20 +39,24 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        ArrayList imagesArrayList = prepareData();
-        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),imagesArrayList);
+        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(), loadImagesFromGallery());
         recyclerView.setAdapter(recyclerViewAdapter);
     }
-    private ArrayList prepareData(){
 
-        ArrayList imageList = new ArrayList<>();
-        for(int i=0;i<image_description.length;i++){
-            Image image = new Image();
-            image.setImageDescription(image_description[i]);
-            Log.d("url",image_urls[i]);
-            image.setImageUrl(image_urls[i]);
-            imageList.add(image);
+    private List<ImageItem> loadImagesFromGallery() {
+
+        List<ImageItem> imageItems = new ArrayList<>();
+
+        String[] projection = {MediaStore.Images.Thumbnails._ID};
+        Cursor cursor = getActivity().managedQuery(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, projection, null, null, MediaStore.Images.Thumbnails._ID + "");
+        int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Thumbnails._ID);
+
+        while (cursor.moveToNext()) {
+            int imageID = cursor.getInt(columnIndex);
+            ImageItem image = new ImageItem(Uri.withAppendedPath(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, "" + imageID), "" + imageID);
+            imageItems.add(image);
         }
-        return imageList;
+
+        return imageItems;
     }
 }

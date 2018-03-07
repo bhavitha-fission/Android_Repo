@@ -12,23 +12,23 @@ import android.widget.TextView;
 import com.fission.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<Image> imageArrayList;
+    private List<ImageItem> imageArrayList;
     private View view;
     private ViewHolder viewHolder;
 
-    public RecyclerViewAdapter(Context context,ArrayList<Image> imageArrayList) {
+    public RecyclerViewAdapter(Context context, List<ImageItem> imageArrayList) {
         this.context = context;
         this.imageArrayList = imageArrayList;
     }
 
     @Override
     public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(context).inflate(R.layout.cards_layout,parent,false);
+        view = LayoutInflater.from(context).inflate(R.layout.cards_layout, parent, false);
         viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -36,29 +36,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(RecyclerViewAdapter.ViewHolder holder, int position) {
 
-        holder.textView.setText(imageArrayList.get(position).getImageDescription());
+        holder.textView.setText(imageArrayList.get(position).getImageDesc());
 
         Picasso.with(context)
-                .load(imageArrayList.get(position).getImageUrl())
-                .resize(120, 120)
+                .load(imageArrayList.get(position).getImageUri())
+                .resize(256, 256)
                 .centerCrop()
                 .into(holder.imageView);
-       // Picasso.with(context).load(imageArrayList.get(position).getImageUrl()).resize(30, 30).into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        return imageArrayList.size() ;
+        return imageArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
         ImageView imageView;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.textView);
-            imageView = (ImageView) itemView.findViewById(R.id.imageView);
+            textView = itemView.findViewById(R.id.textView);
+            imageView = itemView.findViewById(R.id.imageView);
         }
     }
 }
